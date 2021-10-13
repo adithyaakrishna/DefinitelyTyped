@@ -731,11 +731,11 @@ export namespace Tickets {
  * @see {@link https://developer.zendesk.com/rest_api/docs/support/triggers|Zendesk Triggers}
  */
 export namespace Triggers {
-    interface ZendeskTriggerPayload {
-        trigger: ZendeskTrigger;
-    }
 
-    interface ZendeskTrigger {
+    /**
+     * @see {@link https://developer.zendesk.com/rest_api/docs/support/triggers#create-trigger|Zendesk Triggers Create}
+     */
+    interface CreateModel {
         actions: Actions[];
         active?: boolean | undefined;
         category_id?: string | undefined;
