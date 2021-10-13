@@ -765,6 +765,11 @@ export namespace Triggers {
         field: string;
         value: string;
     }
+
+    interface CreatePayload {
+        readonly trigger: CreateModel;
+    }
+
 }
 
 /**
