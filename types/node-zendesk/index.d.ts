@@ -728,6 +728,46 @@ export namespace Tickets {
 }
 
 /**
+ * @see {@link https://developer.zendesk.com/rest_api/docs/support/triggers|Zendesk Triggers}
+ */
+export namespace Triggers {
+    interface ZendeskTriggerPayload {
+        trigger: ZendeskTrigger;
+    }
+
+    interface ZendeskTrigger {
+        actions: Actions[];
+        active?: boolean | undefined;
+        category_id?: string | undefined;
+        conditions: Conditions;
+        readonly created_at?: string;
+        description?: string | undefined;
+        readonly id?: number | undefined;
+        position?: number | undefined;
+        raw_title?: string | undefined;
+        title: string;
+        readonly updated_at?: string | undefined;
+        readonly url?: string | undefined;
+    }
+
+    interface Conditions {
+        all: Condition[];
+        any: Condition[];
+    }
+
+    interface Condition {
+        field: string;
+        operator?: string;
+        value?: string;
+    }
+
+    interface Actions {
+        field: string;
+        value: string;
+    }
+}
+
+/**
  * @see {@link https://developer.zendesk.com/rest_api/docs/support/users|Zendesk Users}
  */
 export namespace Users {
@@ -1088,38 +1128,3 @@ export interface AuditableModel extends TemporalModel {
 }
 
 export type ZendeskID = number;
-
-export interface ZendeskTriggerCondition {
-    field: string;
-    operator?: string;
-    value?: string;
-}
-
-export interface ZendeskTriggerActions {
-    field: string;
-    value: string;
-}
-
-export interface ZendeskTriggerConditions {
-    all: ZendeskTriggerCondition[];
-    any: ZendeskTriggerCondition[];
-}
-
-export interface ZendeskTrigger {
-    actions: ZendeskTriggerActions[];
-    active?: boolean | undefined;
-    category_id?: string | undefined;
-    conditions: ZendeskTriggerConditions;
-    readonly created_at?: string;
-    description?: string | undefined;
-    readonly id?: number | undefined;
-    position?: number | undefined;
-    raw_title?: string | undefined;
-    title: string;
-    readonly updated_at?: string | undefined;
-    readonly url?: string | undefined;
-}
-
-export interface ZendeskTriggerPayload {
-    trigger: ZendeskTrigger;
-}
